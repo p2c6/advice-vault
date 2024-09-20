@@ -9,7 +9,6 @@ import { onMounted, ref } from 'vue';
 const advice = ref('');
 const isLoading = ref(false);
 const clipBoard = ref(false);
-const quote = ref('');
 
 const fetchAdvice = async () => {
     isLoading.value = true;
