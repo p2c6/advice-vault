@@ -13,6 +13,10 @@ const fetchAdvice = async () => {
     advice.value = data.slip.advice;
 }
 
+const handleGenerateNewClick = () => {
+    fetchAdvice()
+}
+
 onMounted(async () => {
     await fetchAdvice();
 })
@@ -27,7 +31,7 @@ onMounted(async () => {
         </div>
         <div class="w-0 md:w-96 text-center mr-5 md:mr-0">
             <div class="flex items-center gap-2">
-                <button class="bg-indigo-600 p-2 rounded-full text-white">
+                <button class="bg-indigo-600 p-2 rounded-full text-white" @click="handleGenerateNewClick">
                     <div class="flex gap-1 items-center">
                         <i class="text-sm pi pi-sync"> </i>  
                         <p class="hidden md:block text-xs"> Generate new </p>
