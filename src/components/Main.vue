@@ -1,5 +1,5 @@
 <script setup>
-import Quote from '@/components/Quote.vue';
+import Quote from '@/components/reusable/Quote.vue';
 import Card from '@/components/reusable/Card.vue';
 import ButtonList from '@/components/reusable/ButtonList.vue';
 import Button from '@/components/reusable/Button.vue';
