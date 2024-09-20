@@ -10,17 +10,27 @@ defineProps({
         require: true
     }
 });
+
+const emit = defineEmits(['copyToClipboard'])
+
+const handleCopyClick = () => {
+    emit('copyToClipboard')
+
+    const quote = document.querySelector("#quote").textContent;
+    navigator.clipboard.writeText(quote)
+
+}
 </script>
 
 <template>
     <div>
         <div class="flex justify-end">
-            <button><i class="pi pi-clone text-indigo-600"></i></button>
+            <button><i class="pi pi-clone text-indigo-600" @click="handleCopyClick"></i></button>
         </div>
         <div class="text-center font-normal italic mb-5 text-indigo-700">
             <div v-if="!isLoading && quote">
                 <div class="text-5xl flex justify-start ml-5">“</div> 
-                <p class="font-bold">
+                <p class="font-bold" id="quote">
                     {{ quote }} 
                 </p>
                 <div class="text-5xl flex justify-end mr-5">
@@ -28,7 +38,7 @@ defineProps({
                 </div>
             </div>
             <div v-else>
-                Loading...
+                <i class="pi pi-spin pi-spinner" style="font-size: 2rem"></i>
             </div>
         </div> 
     </div>

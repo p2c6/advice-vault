@@ -8,6 +8,7 @@ import { onMounted, ref } from 'vue';
 
 const advice = ref('');
 const isLoading = ref(false);
+const clipBoard = ref(false);
 
 const fetchAdvice = async () => {
     isLoading.value = true;
@@ -27,6 +28,10 @@ const handleGenerateNewClick = () => {
     fetchAdvice()
 }
 
+const handleCopyToClickboardClick = () => {
+    clipBoard.value = true;
+}
+
 onMounted(async () => {
     await fetchAdvice();
 })
@@ -34,6 +39,14 @@ onMounted(async () => {
 </script>
 
 <template>
+    <div v-if="clipBoard" class="bg-indigo-600 text-white p-2 flex justify-between">
+        <p>
+            Copied to clipboard.
+        </p>
+        <button>
+            <i class="pi pi-times text-white"></i>
+        </button>
+    </div>
     <div class="h-screen flex flex-col gap-5 justify-center items-center">
         <h1 class="font-bold text-indigo-600 italic text-4xl">AdviceVault</h1>
         <div class="w-96 text-center text-slate-500">
@@ -50,7 +63,7 @@ onMounted(async () => {
             </div>
         </div>
         <Card>
-            <Quote :quote="advice" :isLoading="isLoading" />
+            <Quote :quote="advice" :isLoading="isLoading" @copyToClipboard="handleCopyToClickboardClick" />
         </Card> 
         <ButtonList>
                 <Button title="facebook" icon="pi pi-facebook" />
