@@ -25,6 +25,7 @@ const fetchAdvice = async () => {
 }
 
 const handleGenerateNewClick = () => {
+    clipBoard.value = false;
     fetchAdvice()
 }
 
