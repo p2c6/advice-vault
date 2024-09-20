@@ -32,6 +32,10 @@ const handleCopyToClickboardClick = () => {
     clipBoard.value = true;
 }
 
+const handleCloseMessageClick = () => {
+    clipBoard.value = false;
+}
+
 onMounted(async () => {
     await fetchAdvice();
 })
@@ -43,7 +47,7 @@ onMounted(async () => {
         <p>
             Copied to clipboard.
         </p>
-        <button>
+        <button @click="handleCloseMessageClick">
             <i class="pi pi-times text-white"></i>
         </button>
     </div>
