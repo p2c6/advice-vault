@@ -46,7 +46,7 @@ onMounted(async () => {
 <template>
     <div v-if="clipBoard" class="bg-indigo-600 text-white p-2 flex justify-between">
         <p>
-            Copied to clipboard.
+            <i class="pi pi-clipboard"> </i> Copied to clipboard.
         </p>
         <button @click="handleCloseMessageClick">
             <i class="pi pi-times text-white"></i>
