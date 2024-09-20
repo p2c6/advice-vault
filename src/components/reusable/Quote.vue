@@ -14,10 +14,12 @@ defineProps({
 const emit = defineEmits(['copyToClipboard'])
 
 const handleCopyClick = () => {
-    emit('copyToClipboard')
-
     const quote = document.querySelector("#quote").textContent;
     navigator.clipboard.writeText(quote)
+
+    emit('copyToClipboard', quote)
+
+    
 
 }
 </script>

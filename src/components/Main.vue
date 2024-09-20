@@ -9,6 +9,7 @@ import { onMounted, ref } from 'vue';
 const advice = ref('');
 const isLoading = ref(false);
 const clipBoard = ref(false);
+const quote = ref('');
 
 const fetchAdvice = async () => {
     isLoading.value = true;
@@ -29,12 +30,40 @@ const handleGenerateNewClick = () => {
     fetchAdvice()
 }
 
-const handleCopyToClickboardClick = () => {
-    clipBoard.value = true;
+const handleCopyToClickboardClick = (copiedQuote, forceShare = false) => {
+    advice.value = copiedQuote;
+
+    if (!forceShare) 
+        clipBoard.value = true;
 }
 
 const handleCloseMessageClick = () => {
     clipBoard.value = false;
+}
+
+const handleShareClick = (socMed) => {
+    const urlToShare = window.location.href; 
+    const quoteToShare = advice.value; 
+    handleCopyToClickboardClick(quoteToShare, true)
+
+    let url;
+    
+    switch(socMed) {
+        case 'facebook':
+            url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(urlToShare)}&quote=${encodeURIComponent(quoteToShare)}`;
+            break;
+        case 'twitter':
+            url =  `https://twitter.com/intent/tweet?text=${encodeURIComponent(quoteToShare)}&url=${encodeURIComponent(urlToShare)}`;
+            break;
+        case 'linkedin':
+            url = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(urlToShare)}`;
+            break;
+        default:
+            console.log('Error social media category')
+            break;
+    }
+
+    window.open(url, '_blank');
 }
 
 onMounted(async () => {
@@ -71,9 +100,9 @@ onMounted(async () => {
             <Quote :quote="advice" :isLoading="isLoading" @copyToClipboard="handleCopyToClickboardClick" />
         </Card> 
         <ButtonList>
-                <Button title="facebook" icon="pi pi-facebook" />
-                <Button title="twitter" icon="pi pi-twitter" />
-                <Button title="pinterest" icon="pi pi-linkedin" />
+                <Button category="facebook" icon="pi pi-facebook" @shareToSocMed="handleShareClick" />
+                <Button category="twitter" icon="pi pi-twitter" @shareToSocMed="handleShareClick" />
+                <Button category="linkedin" icon="pi pi-linkedin" @shareToSocMed="handleShareClick" />
         </ButtonList>
     </div>
     
