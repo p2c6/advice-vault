@@ -7,10 +7,20 @@ import axios from "@/config/axios"
 import { onMounted, ref } from 'vue';
 
 const advice = ref('');
+const isLoading = ref(false);
 
 const fetchAdvice = async () => {
-    const { data } = await axios.get('/advice')
-    advice.value = data.slip.advice;
+    isLoading.value = true;
+    try {
+        const { data } = await axios.get('/advice')
+        advice.value = data.slip.advice;
+        isLoading.value = false;
+        
+    } catch(error) {
+        console.log('Error fetching advice', error)
+        isLoading.value = false;
+    }
+    
 }
 
 const handleGenerateNewClick = () => {
@@ -40,7 +50,7 @@ onMounted(async () => {
             </div>
         </div>
         <Card>
-            <Quote :quote="advice" />
+            <Quote :quote="advice" :isLoading="isLoading" />
         </Card> 
         <ButtonList>
                 <Button title="facebook" icon="pi pi-facebook" />
