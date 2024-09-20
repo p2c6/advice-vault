@@ -11,7 +11,7 @@ defineProps({
 </script>
 
 <template>
-        <button class="rounded-full border-2 w-6 h-6 mt-2">
-            <i :class="icon"></i>
+        <button class="border-indigo-600 rounded-full border-2 w-8 h-8 mt-2">
+            <i :class="`text-indigo-600 ${icon}`"></i>
         </button>
 </template>
