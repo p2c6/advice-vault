@@ -104,6 +104,7 @@ onMounted(async () => {
                 <Button category="twitter" icon="pi pi-twitter" @shareToSocMed="handleShareClick" />
                 <Button category="linkedin" icon="pi pi-linkedin" @shareToSocMed="handleShareClick" />
         </ButtonList>
+        <p class="text-xs text-slate-500">Credits to <a class="underline" href="https://api.adviceslip.com/">Advice API</a></p>
     </div>
     
 </template>
