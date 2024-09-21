@@ -1,8 +1,6 @@
 <script setup>
 import Advice from '@/components/reusable/Advice.vue';
 import Card from '@/components/reusable/Card.vue';
-import ButtonList from '@/components/reusable/ButtonList.vue';
-import Button from '@/components/reusable/Button.vue';
 import axios from "@/config/axios"
 import { onMounted, ref } from 'vue';
 
