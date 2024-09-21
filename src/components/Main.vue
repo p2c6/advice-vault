@@ -1,5 +1,5 @@
 <script setup>
-import Quote from '@/components/reusable/Quote.vue';
+import Advice from '@/components/reusable/Advice.vue';
 import Card from '@/components/reusable/Card.vue';
 import ButtonList from '@/components/reusable/ButtonList.vue';
 import Button from '@/components/reusable/Button.vue';
@@ -29,8 +29,8 @@ const handleGenerateNewClick = () => {
     fetchAdvice()
 }
 
-const handleCopyToClickboardClick = (copiedQuote, forceShare = false) => {
-    advice.value = copiedQuote;
+const handleCopyToClickboardClick = (copiedadvice, forceShare = false) => {
+    advice.value = copiedadvice;
 
     if (!forceShare) 
         clipBoard.value = true;
@@ -42,17 +42,17 @@ const handleCloseMessageClick = () => {
 
 const handleShareClick = (socMed) => {
     const urlToShare = window.location.href; 
-    const quoteToShare = advice.value; 
-    handleCopyToClickboardClick(quoteToShare, true)
+    const adviceToShare = advice.value; 
+    handleCopyToClickboardClick(adviceToShare, true)
 
     let url;
     
     switch(socMed) {
         case 'facebook':
-            url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(urlToShare)}&quote=${encodeURIComponent(quoteToShare)}`;
+            url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(urlToShare)}&advice=${encodeURIComponent(adviceToShare)}`;
             break;
         case 'twitter':
-            url =  `https://twitter.com/intent/tweet?text=${encodeURIComponent(quoteToShare)}&url=${encodeURIComponent(urlToShare)}`;
+            url =  `https://twitter.com/intent/tweet?text=${encodeURIComponent(adviceToShare)}&url=${encodeURIComponent(urlToShare)}`;
             break;
         case 'linkedin':
             url = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(urlToShare)}`;
@@ -96,7 +96,7 @@ onMounted(async () => {
             </div>
         </div>
         <Card>
-            <Quote :quote="advice" :isLoading="isLoading" @copyToClipboard="handleCopyToClickboardClick" />
+            <advice :advice="advice" :isLoading="isLoading" @copyToClipboard="handleCopyToClickboardClick" />
         </Card> 
         <ButtonList>
                 <Button category="facebook" icon="pi pi-facebook" @shareToSocMed="handleShareClick" />
