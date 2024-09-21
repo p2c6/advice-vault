@@ -9,6 +9,7 @@ import { onMounted, ref } from 'vue';
 const advice = ref('');
 const isLoading = ref(false);
 const clipBoard = ref(false);
+const apiWebsite = 'https://api.adviceslip.com/';
 
 const fetchAdvice = async () => {
     isLoading.value = true;
@@ -103,7 +104,7 @@ onMounted(async () => {
                 <Button category="twitter" icon="pi pi-twitter" @shareToSocMed="handleShareClick" />
                 <Button category="linkedin" icon="pi pi-linkedin" @shareToSocMed="handleShareClick" />
         </ButtonList>
-        <p class="text-xs text-slate-500">Credits to <a class="underline" href="https://api.adviceslip.com/">Advice Slip API</a></p>
+        <p class="text-xs text-slate-500">Credits to <a class="underline" :href="apiWebsite">Advice Slip API</a></p>
     </div>
     
 </template>
