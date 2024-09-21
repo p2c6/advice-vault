@@ -30,11 +30,8 @@ const handleGenerateNewClick = () => {
     fetchAdvice()
 }
 
-const handleCopyToClickboardClick = (copiedadvice, forceShare = false) => {
+const handleCopyToClickboardClick = (copiedadvice) => {
     advice.value = copiedadvice;
-
-    if (!forceShare) 
-        clipBoard.value = true;
 }
 
 const handleCloseMessageClick = () => {
