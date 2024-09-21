@@ -41,29 +41,8 @@ const handleCloseMessageClick = () => {
     clipBoard.value = false;
 }
 
-const handleShareClick = (socMed) => {
-    const urlToShare = window.location.href; 
-    const adviceToShare = advice.value; 
-    handleCopyToClickboardClick(adviceToShare, true)
-
-    let url;
-    
-    switch(socMed) {
-        case 'facebook':
-            url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(urlToShare)}&advice=${encodeURIComponent(adviceToShare)}`;
-            break;
-        case 'twitter':
-            url =  `https://twitter.com/intent/tweet?text=${encodeURIComponent(adviceToShare)}&url=${encodeURIComponent(urlToShare)}`;
-            break;
-        case 'linkedin':
-            url = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(urlToShare)}`;
-            break;
-        default:
-            console.log('Error social media category')
-            break;
-    }
-
-    window.open(url, '_blank');
+const handleGithubClick = () => {
+    window.open('https://github.com/p2c6/advice-vault', '_blank');
 }
 
 onMounted(async () => {
@@ -99,11 +78,9 @@ onMounted(async () => {
         <Card>
             <advice :advice="advice" :isLoading="isLoading" @copyToClipboard="handleCopyToClickboardClick" />
         </Card> 
-        <ButtonList>
-                <Button category="facebook" icon="pi pi-facebook" @shareToSocMed="handleShareClick" />
-                <Button category="twitter" icon="pi pi-twitter" @shareToSocMed="handleShareClick" />
-                <Button category="linkedin" icon="pi pi-linkedin" @shareToSocMed="handleShareClick" />
-        </ButtonList>
+        <button class="border-indigo-600 rounded-full border-2 w-8 h-8 mt-2" @click="handleGithubClick">
+            <i :class="`text-indigo-600 pi pi-github`"></i>
+        </button>
         <p class="text-xs text-slate-500">Credits to <a class="underline" :href="apiWebsite">Advice Slip API</a></p>
     </div>
     
