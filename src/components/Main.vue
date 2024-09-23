@@ -28,9 +28,9 @@ const handleGenerateNewClick = () => {
     fetchAdvice()
 }
 
-const handleCopyToClickboardClick = (copiedadvice) => {
+const handleCopyToClickboardClick = (copiedAdvice) => {
     clipBoard.value = true;
-    advice.value = copiedadvice;
+    advice.value = copiedAdvice;
 }
 
 const handleCloseMessageClick = () => {
