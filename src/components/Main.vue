@@ -29,6 +29,7 @@ const handleGenerateNewClick = () => {
 }
 
 const handleCopyToClickboardClick = (copiedadvice) => {
+    clipBoard.value = true;
     advice.value = copiedadvice;
 }
 
