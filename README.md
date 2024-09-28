@@ -1,9 +1,13 @@
 # AdviceVault
 
-A simple web app which generates random advice
+A simple website which generates random advice
+
+## Features
+- Generate Advice
+- Copy advice to clipboard
 
 ## Tech Stack Used:
-- VueJS
+- VueJS 3
 - Tailwind CSS
 - AdviceSlip Json API
 
