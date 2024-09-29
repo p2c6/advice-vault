@@ -11,7 +11,7 @@ https://advice-vault.vercel.app/
 - Copy advice to clipboard
 
 ## Tech Stack Used:
-- VueJS 3
+- VueJS 3 (Composition API)
 - Tailwind CSS
 - AdviceSlip Json API
 
