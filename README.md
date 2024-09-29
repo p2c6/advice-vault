@@ -7,7 +7,7 @@ A simple website which generates random advice
 https://advice-vault.vercel.app/
 
 ## Features
-- Generate Advice
+- Generate advice
 - Copy advice to clipboard
 
 ## Tech Stack Used:
