@@ -59,7 +59,7 @@ onMounted(async () => {
     <div class="h-screen flex flex-col gap-5 justify-center items-center ml-auto md:ml-0">
         <h1 class="font-bold text-indigo-600 italic text-4xl">AdviceVault</h1>
         <div class="w-70 md:w-96 text-center text-slate-500">
-            <p class="text-xs md:text-sm">Advice Vault a simple platform that generates random thoughtful advice to empower your choices and enhance your life."</p>
+            <p class="text-xs md:text-sm">A simple website which generates random advice</p>
         </div>
         <div class="w-0 md:w-96 text-center mr-5 md:mr-0">
             <div class="flex items-center gap-2">
